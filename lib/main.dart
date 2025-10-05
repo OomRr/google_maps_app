@@ -3,7 +3,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:mapsapp/widgets/custom_google_map.dart';
 
 void main() {
-  runApp(const MapsApp());
+  runApp(Directionality(
+      textDirection: TextDirection.ltr,
+      child: const MapsApp()));
 }
 
 class MapsApp extends StatelessWidget {
