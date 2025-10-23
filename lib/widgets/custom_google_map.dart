@@ -58,7 +58,7 @@ class _CustomGoogleMapState extends State<CustomGoogleMap> {
           right: 16,
           bottom: 16,
           child: ElevatedButton(
-            onPressed: () async {
+            onPressed: () async {/*
               LocationData currentLocationData = await location.getLocation();
               //change location of the map
               googleMapController!.animateCamera(
@@ -74,9 +74,10 @@ class _CustomGoogleMapState extends State<CustomGoogleMap> {
                 position: LatLng(currentLocationData.latitude!, currentLocationData.longitude!),
               );
               markers.add(myLocationMarker);
-              setState(() {});
+              setState(() {});*/
+              await updateMyLocation();
             },
-            child: const Text('click me'),
+            child: const Text('live tracking'),
           ),
         ),
       ],
@@ -178,7 +179,7 @@ location.changeSettings(distanceFilter: 1);
     location.onLocationChanged.listen((event) {
       googleMapController?.animateCamera(
         CameraUpdate.newCameraPosition(
-          CameraPosition(target: LatLng(event.latitude!, event.longitude!)),
+          CameraPosition(target: LatLng(event.latitude!, event.longitude!),zoom: 16),
         ),
       );
       Marker myLocationMarker = Marker(
